@@ -65,3 +65,7 @@ function randomChoice() {
         questions.splice(randomIndex, 1);
     }
 }
+
+document.addEventListener('dblclick', function (e) {
+    e.preventDefault();
+});
