@@ -1,0 +1,61 @@
+/* Generel styling */
+body {
+    font-family: 'Arial', sans-serif;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    background-color: #2c2c2c; /* Mørk grå baggrund */
+    color: #f4f4f4;
+    margin: 0;
+    text-align: center;
+}
+
+h1 {
+    font-size: 2.5em;
+    margin-bottom: 0.5em;
+    color: #f4b400; /* Guld farve */
+}
+
+#result {
+    font-size: 1.5em;
+    font-weight: bold;
+    color: #4a90e2; /* Blå farve til resultat */
+    margin: 20px 0;
+}
+
+/* Knappestil */
+button {
+    padding: 12px 24px;
+    font-size: 1.1em;
+    color: #ffffff;
+    background-color: #4a90e2; /* Blå farve */
+    border: none;
+    border-radius: 25px; /* Let afrundede kanter */
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.2s;
+    margin-top: 10px;
+}
+
+button:hover {
+    background-color: #e94e77; /* Varm pink farve ved hover */
+    transform: scale(1.05); /* Lidt forstørrelse ved hover */
+}
+
+button:active {
+    transform: scale(1); /* Går tilbage til normal størrelse ved klik */
+}
+
+/* Nulstillingsknap stil */
+#resetButton {
+    background-color: #e94e77; /* Samme varme pink farve til nulstillingsknappen */
+    color: #ffffff;
+    margin-top: 15px;
+}
+
+/* Effekt for resultattekst */
+#result.shown {
+    color: #f4b400; /* Skifter til guld for at fremhæve resultatet */
+    transition: color 0.3s ease-in-out;
+}
