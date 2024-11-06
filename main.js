@@ -66,6 +66,7 @@ function randomChoice() {
     }
 }
 
+// med hjælp fra chatGPT
 let lastTouchEnd = 0;
 document.addEventListener('touchend', function (event) {
     const now = (new Date()).getTime();
