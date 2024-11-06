@@ -60,3 +60,17 @@ button:active {
     transition: color 0.3s ease-in-out;
 }
 
+@media (max-width: 480px) {
+    h1 {
+        font-size: 2em;
+    }
+
+    #result {
+        font-size: 1.2em;
+    }
+
+    button {
+        padding: 10px 20px;
+        font-size: 1em;
+    }
+}
