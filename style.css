@@ -17,6 +17,28 @@ h1 {
     color: #f4b400;
 }
 
+#result-container {
+    padding-bottom: 1em;
+    position: relative;
+    margin-bottom: 1em;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 4em; /* Reserve space to prevent shifting */
+}
+
+#result {
+    font-size: 1.5em;
+    font-weight: bold;
+    color: #4a90e2;
+    height: 1.5em; /* Fixed height to prevent layout shift */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 10px 0;
+}
+
 #drinkMessage {
     display: flex;
     justify-content: center;
@@ -27,29 +49,14 @@ h1 {
     opacity: 0;
     animation: fadeIn 3s forwards;
     min-height: 1.5em;
-    pointer-events: none;
+    text-align: center;
     margin-top: 10px;
     margin-bottom: 20px;
-    text-align: center;
-}
-
-#result-container {
-    padding-bottom: 2em;
-}
-
-#result {
-    font-size: 1.5em;
-    font-weight: bold;
-    color: #4a90e2;
-    margin: 10px 0;
-    height: 1.5em;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    height: 1.5em; /* Set fixed height to avoid shifting */
 }
 
 button {
-    padding: 12px 24px;
+    padding: 10px 20px;
     font-size: 1.1em;
     color: #ffffff;
     background-color: #4a90e2;
@@ -65,6 +72,10 @@ button:hover {
     transform: scale(1.05);
 }
 
+button:active {
+    transform: scale(1);
+}
+
 @media (max-width: 480px) {
     h1 {
         font-size: 2em;
@@ -76,17 +87,14 @@ button:hover {
     }
 
     button {
-        padding: 10px 20px;
+        padding: 8px 18px;
         font-size: 1em;
+        margin-top: 8px;
     }
 
     #drinkMessage {
         font-size: 1em;
-        margin-bottom: 40px;
-    }
-
-    .main-button {
-        margin-top: 20px;
+        margin-bottom: 20px;
     }
 }
 

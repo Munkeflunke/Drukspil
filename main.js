@@ -70,7 +70,7 @@ function randomChoice() {
         const bonusMessage = selectAndRemoveQuestion(questions.bonusMessages);
 
         // Hvis ID elementet allerede eksisterer, gemmes det i variablen 'bonusDisplay'; hvis det ikke findes, oprettes et nyt 'div'-element i stedet.
-        const bonusDisplay = document.getElementById("drinkMessage") || document.createElement("div");
+        const bonusDisplay = document.getElementById("drinkMessage");
 
         // Dette sætter tekstindholdet for bonusDisplay til den tilfældige bonusbesked (se variablen bonusMessage).
         bonusDisplay.textContent = bonusMessage;
@@ -78,10 +78,12 @@ function randomChoice() {
         document.body.appendChild(bonusDisplay);
     }
 
+
+
     // Her rydes bonusDisplay, hvis den altså eksisterer, inden der vises et nyt spørgsmål
     const bonusDisplay = document.getElementById("drinkMessage");
     if (bonusDisplay) {
-        bonusDisplay.textContent = "";
+        bonusDisplay.textContent= "";
     }
 
     // Der er kun 25% chance for at få en bonusbesked, så længe der stadig er elementer i det sorterede array.
