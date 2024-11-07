@@ -1,24 +1,25 @@
-// Vi opretter tomme arrays, så dataen fra JSON filen kan blive fyldt ind, og de nye arrays kan blive brugt senere i koden.
 let questions = {
     neverHaveIEver: [],
     category: [],
-    mostLikelyTo: []
+    mostLikelyTo: [],
+    bonusMessages: []
 };
 
-// Spørgmålene bliver hentet ind fra JSON filen.
+// Spørgsmålene bliver hentet ind fra JSON filen.
 fetch('data.json')
     .then(response => response.json())
     .then(data => {
         questions.neverHaveIEver = data.neverHaveIEver;
         questions.category = data.category;
         questions.mostLikelyTo = data.mostLikelyTo;
+        questions.bonusMessages = data.bonusMessages
     })
     .catch(error => console.error("Error fetching questions:", error));
 
-// Funktionen sørger for fjerne et spørgsmål, der allerede har været der at lave en nulstil knap, når der ikke er flere spørgsmål tilbage i vores JSON objekter.
+// Funktionen sørger for at fjerne et spørgsmål, der allerede har været. Funktionen laver derudover en nulstil knap, når der ikke er flere spørgsmål tilbage i vores JSON objekter.
 function selectAndRemoveQuestion(array) {
     if (array.length === 0) {
-        document.getElementById("mode-Title").textContent = "Ingen flere spørgsmål!";
+        document.getElementById("mode-title").textContent = "Ingen flere spørgsmål!";
         document.getElementById("result").textContent = "";
         if (!document.getElementById("resetButton")) {
             const resetButton = document.createElement("button");
@@ -29,56 +30,61 @@ function selectAndRemoveQuestion(array) {
                 location.reload();
             });
         }
-
-    } else {
+    } // Dette else statement returnerer det sprøgsmål, der lige er blevet fjernet vha. splice metoden.
+        else {
         const randomIndex = Math.floor(Math.random() * array.length);
         const question = array[randomIndex];
-        array.splice(randomIndex, 1); // Fjern spørgsmålet fra arrayet
+        array.splice(randomIndex, 1);
         return question;
     }
 }
 
 function randomChoice() {
     const randomMode = Math.random();
+    let selectedQuestion;
 
     if (randomMode < 0.15) {
-        // Kategori Mode (15% chance)
-        document.getElementById("mode-Title").textContent = "Kategori..";
-        const randomIndex = Math.floor(Math.random() * questions.category.length);
-        document.getElementById("result").textContent = questions.category[randomIndex];
-        selectAndRemoveQuestion(questions.category)
+        // Kategori (15% chance for at få denne gamemode)
+        document.getElementById("mode-title").textContent = "Kategori..";
+        selectedQuestion = selectAndRemoveQuestion(questions.category);
     } else if (randomMode < 0.4) {
-        // Hvem er mest tilbøjelig til (30% chance)
-        document.getElementById("mode-Title").textContent = "Hvem er mest tilbøjelig til..";
-        const randomIndex = Math.floor(Math.random() * questions.mostLikelyTo.length);
-        document.getElementById("result").textContent = questions.mostLikelyTo[randomIndex];
-        selectAndRemoveQuestion(questions.mostLikelyTo)
+        // Hvem er mest tilbøjelig til (30% chance for at få denne gamemode)
+        document.getElementById("mode-title").textContent = "Hvem er mest tilbøjelig til..";
+        selectedQuestion = selectAndRemoveQuestion(questions.mostLikelyTo);
     } else {
-        // Jeg har aldrig (60% chance)
-        document.getElementById("mode-Title").textContent = "Jeg har aldrig..";
-        const randomIndex = Math.floor(Math.random() * questions.neverHaveIEver.length);
-        document.getElementById("result").textContent = questions.neverHaveIEver[randomIndex];
-        selectAndRemoveQuestion(questions.neverHaveIEver)
+        // Jeg har aldrig (55% chance for at få denne gamemode)
+        document.getElementById("mode-title").textContent = "Jeg har aldrig..";
+        selectedQuestion = selectAndRemoveQuestion(questions.neverHaveIEver);
     }
 
-    // Bonussssssss!!!!!!!
-    const bonusMessages = [
-        "Bonus: Du må udpege én til at hente øl til bordet",
-        "Bonus: Din makker til højre må give 2 slurke ud",
-        "Bonus: Alle der har hvidt tøj på skal tage en slurk",
-        "Bonus: Vælg en person, der må give 3 slurke ud",
-    ];
+    if (selectedQuestion) {
+        document.getElementById("result").textContent = selectedQuestion;
+    }
+
+
+
+
 
     function showDrinkMessage() {
-        const randomBonus = bonusMessages[Math.floor(Math.random() * bonusMessages.length)];
+        // Denne sortere allerede viste bonusbeskeder vha. funktionen. Vi bruger denne nye array med de sorterede bonusbeskeder senere i koden.
+        const bonusMessage = selectAndRemoveQuestion(questions.bonusMessages);
+
+        // Hvis ID elementet allerede eksisterer, gemmes det i variablen 'bonusDisplay'; hvis det ikke findes, oprettes et nyt 'div'-element i stedet.
         const bonusDisplay = document.getElementById("drinkMessage") || document.createElement("div");
-        bonusDisplay.id = "drinkMessage";
-        bonusDisplay.textContent = randomBonus;
+
+        // Dette sætter tekstindholdet for bonusDisplay til den tilfældige bonusbesked (se variablen bonusMessage).
+        bonusDisplay.textContent = bonusMessage;
         document.body.appendChild(bonusDisplay);
-        setTimeout(() => bonusDisplay.textContent = "", 7000);
     }
 
-    if (Math.random() <= 0.09) {
+    // Her rydes bonusDisplay, hvis den altså eksisterer, inden der vises et nyt spørgsmål
+    const bonusDisplay = document.getElementById("drinkMessage");
+    if (bonusDisplay) {
+        bonusDisplay.textContent = "";
+    }
+
+    // Der er kun 25% chance for at få en bonusbesked, så længe der stadig er elementer i det sorterede array.
+    if (Math.random() <= 0.25 && questions.bonusMessages.length > 0) {
         showDrinkMessage();
     }
 }

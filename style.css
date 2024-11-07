@@ -20,7 +20,9 @@ h1 {
 #drinkMessage {
     color: #ffcc00;
     font-size: 1.2em;
-    margin-top: 10px;"
+    margin-top: 10px;
+    opacity: 0; /* Start med 0 opacity */
+    animation: fadeIn 3s forwards; /* Animerer fra 0 til 100% opacity på 3 sekunder */
 }
 
 #result {
@@ -70,5 +72,14 @@ button:active {
     button {
         padding: 10px 20px;
         font-size: 1em;
+    }
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
     }
 }
