@@ -20,18 +20,31 @@ h1 {
 #drinkMessage {
     color: #ffcc00;
     font-size: 1.2em;
-    margin-top: 10px;
     visibility: hidden;
+    opacity: 0;
     animation: fadeIn 3s forwards;
     min-height: 1.5em;
+    position: absolute;
+    top: 61%;
+    left: 50%;
+    transform: translateX(-50%);
+    pointer-events: none;
 }
 
+#result-container {
+    padding-bottom: 2em;
+    position: relative;
+}
 
 #result {
     font-size: 1.5em;
     font-weight: bold;
     color: #4a90e2;
-    margin: 20px 0;
+    margin: 10px 0;
+    height: 1.5em;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 button {
@@ -68,6 +81,7 @@ button:active {
 
     #result {
         font-size: 1.2em;
+        height: 1.2em;
     }
 
     button {
