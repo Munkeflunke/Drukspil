@@ -29,6 +29,8 @@ h1 {
     left: 50%;
     transform: translateX(-50%);
     pointer-events: none;
+    margin-top: 10px;
+    margin-bottom: 20px;
 }
 
 #result-container {
@@ -87,6 +89,15 @@ button:active {
     button {
         padding: 10px 20px;
         font-size: 1em;
+    }
+
+    #drinkMessage {
+        font-size: 1em;
+        margin-bottom: 40px;
+    }
+
+    .main-button {
+        margin-top: 20px;
     }
 }
 
