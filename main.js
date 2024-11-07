@@ -74,6 +74,7 @@ function randomChoice() {
 
         // Dette sætter tekstindholdet for bonusDisplay til den tilfældige bonusbesked (se variablen bonusMessage).
         bonusDisplay.textContent = bonusMessage;
+        bonusDisplay.style.visibility = "visible";
         document.body.appendChild(bonusDisplay);
     }
 
