@@ -18,24 +18,23 @@ h1 {
 }
 
 #drinkMessage {
+    display: flex;
+    justify-content: center;
+    align-items: center;
     color: #ffcc00;
     font-size: 1.2em;
     visibility: hidden;
     opacity: 0;
     animation: fadeIn 3s forwards;
     min-height: 1.5em;
-    position: absolute;
-    top: 61%;
-    left: 50%;
-    transform: translateX(-50%);
     pointer-events: none;
     margin-top: 10px;
     margin-bottom: 20px;
+    text-align: center;
 }
 
 #result-container {
     padding-bottom: 2em;
-    position: relative;
 }
 
 #result {
@@ -64,16 +63,6 @@ button {
 button:hover {
     background-color: #e94e77;
     transform: scale(1.05);
-}
-
-button:active {
-    transform: scale(1);
-}
-
-
-#result.shown {
-    color: #f4b400;
-    transition: color 0.3s ease-in-out;
 }
 
 @media (max-width: 480px) {
