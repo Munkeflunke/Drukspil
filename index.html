@@ -1,18 +1,42 @@
-<!doctype html>
-<html lang="en">
+<!DOCTYPE html>
+<html lang="da">
 <head>
-    <link rel="stylesheet" href="style.css">
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no, maximum-scale=1, minimum-scale=1">
-    <title>Jeg har aldrig</title>
+    <title>Drikkespil - Jeg har aldrig</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-<h1 id="mode-title">Jeg har aldrig...</h1>
-<div id="result-container">
-    <p id="result"></p>
-    <div id="drinkMessage"></div>
+<h1 id="game-title">Drikkespil - Jeg har aldrig</h1>
+
+<!-- Spilområde -->
+<div id="game-area">
+    <!-- Spørgsmål -->
+    <div id="question-area">
+        <h2 id="mode-title">Jeg har aldrig...</h2>
+        <p id="result"></p>
+    </div>
+
+    <!-- Bonus Besked -->
+    <div id="bonus-area">
+        <p id="bonus-message"></p>
+    </div>
+
+    <!-- Kontrolknapper -->
+    <div id="controls">
+        <button class="main-button" id="action-button">Næste</button>
+        <button class="main-button" id="reset-button">Nulstil Spil</button>
+    </div>
+
+    <!-- Total Drinks -->
+    <div id="stats-area">
+        <p id="total-drinks">Total drinks: 0</p>
+    </div>
 </div>
-<button class="main-button" onclick="randomChoice()">Fyr den af</button>
+
+<!-- Disclaimer -->
+<p id="disclaimer">Bemærk: Drik ansvarligt og kun hvis du er over den lovlige alder.</p>
+
+<!-- Script -->
 <script src="main.js"></script>
 </body>
 </html>
